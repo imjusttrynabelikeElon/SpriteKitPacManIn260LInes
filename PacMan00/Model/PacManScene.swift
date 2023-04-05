@@ -1,11 +1,13 @@
 import SpriteKit
 
+
 class WallNode : SKSpriteNode {}
 
 let pacManSpeed = CGFloat(10)
 let pacManStartPosition = CGPoint(x: 10, y: -10) // Arbitrary not inside maze walls
 let wackawackaPlaySoundAction = SKAction.playSoundFileNamed("wackawacka", waitForCompletion: false)
 let deathPlaySoundAction = SKAction.playSoundFileNamed("death", waitForCompletion: false)
+
 
 // Play sound whenever PacMan is in motion
 func makePacManAction(node : SKNode) -> SKAction {
@@ -19,6 +21,7 @@ func makePacManAction(node : SKNode) -> SKAction {
              node.run(wackawackaPlaySoundAction)
           }
        }]))
+
 }
 
 func makePacManDeathAction() -> SKAction {
@@ -41,20 +44,26 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
                                   CGVector(dx: -pacManRadius, dy: 0), // left
                                   CGVector(dx: pacManRadius, dy: 0),  // right
    ]
-   static let directionAnglesRad = [CGFloat.pi * -0.5,      // up
-                                    CGFloat.pi * 0.5,   // down
-                                    CGFloat.pi * 1.0,   // left
-                                    CGFloat.pi * 0.0,   // right
+   static let directionAnglesRad = [CGFloat.pi * -2.9 * 800,   // up
+                                    CGFloat.pi * 2.5 *  800,   // down
+                                    CGFloat.pi * 1.0 *  800,   // left
+                                    CGFloat.pi * 0.0 *  800,   // right
    ]
-   static var vulnerableGhostPrototype : VulnerableGhostNode?
-   static var eyesPrototype : SKSpriteNode?
-   static var infoLabelPrototype : SKLabelNode?
-   var namedGhosts = Dictionary<String, GhostNode>()
-   var pacManNode : SKShapeNode?
-   var pacManMouthAngleRad = CGFloat.pi * 0.25  // Arbitrary initial angle
-   var pacManMouthAngleDeltaRad = CGFloat(-0.05) // Arbitrary small change
-   var pacManDirection = Direction.Left { didSet { movePacMan() } }
-   var score = 0
+    static var vulnerableGhostPrototype : VulnerableGhostNode?
+    static var eyesPrototype : SKSpriteNode?
+    static var infoLabelPrototype : SKLabelNode?
+    
+    var namedGhosts = Dictionary<String, GhostNode>()
+    var pacManNode : SKShapeNode?
+    var pacManMouthAngleRad = CGFloat.pi * 0.25  // Arbitrary initial angle
+    var pacManMouthAngleDeltaRad = CGFloat(-0.05) // Arbitrary small change
+    var pacManDirection = Direction.Left { didSet { movePacMan() } }
+    var score = 0
+   
+    var highScore = 0
+    var allScore = [Int]()
+    
+    var scoreLabel: SKLabelNode!
    
    // MARK: - Initialization
    override func didMove(to view: SKView) {
@@ -62,7 +71,8 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
       PacManScene.vulnerableGhostPrototype = (childNode(withName: "GhostVulnerablePrototype") as? VulnerableGhostNode)!
       PacManScene.eyesPrototype = (childNode(withName: "EyesPrototype") as? SKSpriteNode)!
       PacManScene.infoLabelPrototype = (childNode(withName: "InfoLabelPrototype") as? SKLabelNode)!
-      initGhosts(scene: self, names: ["GhostBlinky", "GhostInky", "GhostPinky", "GhostClyde"])      
+      initGhosts(scene: self, names: ["GhostBlinky", "GhostInky", "GhostPinky", "GhostClyde", "GhostPinkyy", "GhostPinkyyy"])
+       // I add two more
       pacManNode = (childNode(withName: "PacManNode") as? SKShapeNode)!
       pacManNode!.position = pacManStartPosition
       pacManNode!.physicsBody = SKPhysicsBody(circleOfRadius: PacManScene.pacManRadius)
@@ -74,6 +84,7 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
       // Pellets have collision category b0001 and collision mask b0000
       // Ghosts have collision category  b0010 and collision mask b0010
       pacManNode!.physicsBody!.collisionBitMask = 0b0100 // Don't colllide with Pellets or ghosts
+       
    }
    
    // MARK: - PacMan Movement
@@ -112,6 +123,18 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
    
    // MARK: - Physics Collisions
    func didBegin(_ contact: SKPhysicsContact) {
+       
+       let categoryA = contact.bodyA.categoryBitMask
+              let categoryB = contact.bodyB.categoryBitMask
+              
+              if (categoryA == PhysicsCategory.Ghost && categoryB == PhysicsCategory.Ghost) {
+                  // Handle ghost-to-ghost collision
+                  if let nodeA = contact.bodyA.node as? GhostNode, let nodeB = contact.bodyB.node as? GhostNode {
+                      print("\(nodeA.name ?? "") and \(nodeB.name ?? "") collided")
+                  }
+              } else {
+                  // Handle other collisions
+              }
       var otherNode : SKNode? = nil
       // If one of the nodes in contact is PacMan, take note of the other node
       if contact.bodyA.node?.name == "PacManNode" {
@@ -122,7 +145,11 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
       
       if let validOtherNode = otherNode {
          if validOtherNode.name == "Pellet" {
-            score += 1
+            score += 10
+             
+             allScore.append(score)
+             
+          
             validOtherNode.removeFromParent()
             NotificationCenter.default.post(Notification(name: Notification.Name("didChangeScore")))
          } else if validOtherNode.name == "PowerPellet" {
@@ -150,3 +177,4 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
       }
    }
 }
+

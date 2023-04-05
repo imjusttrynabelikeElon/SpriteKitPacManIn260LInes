@@ -1,7 +1,9 @@
 import SpriteKit
 
-let ghostSpeed = CGFloat(10)
-let ghostDecisionPeriodSeconds = 0.2
+
+
+var ghostSpeed = CGFloat(12)
+var ghostDecisionPeriodSeconds = 0.1
 
 class GhostNode : SKSpriteNode {
    var startPosition = CGPoint()
@@ -26,6 +28,7 @@ func makeGhostAction(node : GhostNode) -> SKAction {
              var newVelocity = PacManScene.directionVectors[direction.rawValue]
              newVelocity.dx *= ghostSpeed; newVelocity.dy *= ghostSpeed
              node.physicsBody!.velocity = newVelocity
+              ghostDecisionPeriodSeconds = 0.001
           }
        }]))
 }
@@ -65,11 +68,49 @@ func replaceVulnerableGhostWithEyes(_ vulnerableGhost : VulnerableGhostNode) {
    }
 }
 
-func initGhosts(scene: PacManScene, names : [String]) {
-   for name in names {
-      let existingGhostNode = (scene.childNode(withName: name) as? GhostNode)!
-      existingGhostNode.startPosition = existingGhostNode.position
-      existingGhostNode.run(makeGhostAction(node: existingGhostNode))
-      scene.namedGhosts[name] = existingGhostNode
-   }
+
+func initGhosts(scene: PacManScene, names: [String]) {
+    for name in names {
+        let existingGhostNode = (scene.childNode(withName: name) as? GhostNode)!
+        existingGhostNode.startPosition = existingGhostNode.position
+        existingGhostNode.physicsBody = SKPhysicsBody(rectangleOf: existingGhostNode.size)
+        existingGhostNode.physicsBody!.categoryBitMask = PacManScene.PhysicsCategory.Ghost
+        existingGhostNode.physicsBody!.collisionBitMask = PacManScene.PhysicsCategory.Wall | PacManScene.PhysicsCategory.Ghost
+        existingGhostNode.physicsBody!.contactTestBitMask = PacManScene.PhysicsCategory.PacMan | PacManScene.PhysicsCategory.PowerUp | PacManScene.PhysicsCategory.Ghost
+
+        existingGhostNode.run(makeGhostAction(node: existingGhostNode))
+        scene.namedGhosts[name] = existingGhostNode
+    }
+
+    scene.physicsWorld.contactDelegate = scene
+}
+
+
+extension PacManScene {
+    
+    struct PhysicsCategory {
+        
+           static let None: UInt32 = 0
+           static let PacMan: UInt32 = 0b1
+           static let Ghost: UInt32 = 0b10
+           static let Wall: UInt32 = 0b100
+           static let PowerUp: UInt32 = 0b1000
+       }
+   
+    func handleGhostCollision(_ contact: SKPhysicsContact) {
+        let categoryA = contact.bodyA.categoryBitMask
+        let categoryB = contact.bodyB.categoryBitMask
+        
+        if (categoryA == PhysicsCategory.Ghost && categoryB == PhysicsCategory.Ghost) {
+            // Handle ghost-to-ghost collision
+            if let nodeA = contact.bodyA.node as? GhostNode, let nodeB = contact.bodyB.node as? GhostNode {
+                print("\(nodeA.name ?? "") and \(nodeB.name ?? "") collided")
+                ghostDecisionPeriodSeconds = 0.01
+            }
+        }
+        else {
+            // Handle other collisions
+        }
+    }
+
 }

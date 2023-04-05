@@ -40,6 +40,9 @@
 		9763018D29BB967000BD8CFA /* PacManScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9763018C29BB967000BD8CFA /* PacManScene.swift */; };
 		97AD303C29C20E9800FFD797 /* wackawacka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97AD303B29C20E9800FFD797 /* wackawacka.mp3 */; };
 		97AD303E29C2120C00FFD797 /* death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97AD303D29C2120C00FFD797 /* death.mp3 */; };
+		C9491F3729DCA5B00081FAA8 /* ClydeC.png in Resources */ = {isa = PBXBuildFile; fileRef = C9491F3629DCA5B00081FAA8 /* ClydeC.png */; };
+		C9491F3929DCA75B0081FAA8 /* los_angeles_clippers.png in Resources */ = {isa = PBXBuildFile; fileRef = C9491F3829DCA75B0081FAA8 /* los_angeles_clippers.png */; };
+		C9491F3B29DD53F00081FAA8 /* PacMan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9491F3A29DD53F00081FAA8 /* PacMan.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +81,9 @@
 		9763018C29BB967000BD8CFA /* PacManScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacManScene.swift; sourceTree = "<group>"; };
 		97AD303B29C20E9800FFD797 /* wackawacka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wackawacka.mp3; sourceTree = "<group>"; };
 		97AD303D29C2120C00FFD797 /* death.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = death.mp3; sourceTree = "<group>"; };
+		C9491F3629DCA5B00081FAA8 /* ClydeC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClydeC.png; sourceTree = "<group>"; };
+		C9491F3829DCA75B0081FAA8 /* los_angeles_clippers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = los_angeles_clippers.png; sourceTree = "<group>"; };
+		C9491F3A29DD53F00081FAA8 /* PacMan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PacMan.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 				0310E35B29C15EB700D430CE /* ClydeA.png */,
 				0310E35C29C15EB700D430CE /* ClydeB.png */,
 				0310E35529C15EB600D430CE /* ClydeC.png */,
+				0310E34F29C15B8700D430CE /* BlinkyD.png */,
 				0310E35829C15EB600D430CE /* ClydeD.png */,
 				0310E35429C15EB600D430CE /* InkyA.png */,
 				0310E36029C15EB700D430CE /* InkyB.png */,
@@ -113,9 +120,9 @@
 				0310E35F29C15EB700D430CE /* VulnerableA.png */,
 				0310E35E29C15EB700D430CE /* VulnerableB.png */,
 				0310E34D29C15B8700D430CE /* BlinkyA.png */,
-				0310E34E29C15B8700D430CE /* BlinkyB.png */,
+				C9491F3829DCA75B0081FAA8 /* los_angeles_clippers.png */,
 				0310E34C29C15B8700D430CE /* BlinkyC.png */,
-				0310E34F29C15B8700D430CE /* BlinkyD.png */,
+				C9491F3629DCA5B00081FAA8 /* ClydeC.png */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -125,6 +132,7 @@
 			children = (
 				97AD303D29C2120C00FFD797 /* death.mp3 */,
 				97AD303B29C20E9800FFD797 /* wackawacka.mp3 */,
+				C9491F3A29DD53F00081FAA8 /* PacMan.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -182,6 +190,7 @@
 				97264D9B29C22C1B00BB239D /* Sounds */,
 				97264D9A29C22C0E00BB239D /* Components */,
 				9763018229BB92C300BD8CFA /* PacMan.sks */,
+				0310E34E29C15B8700D430CE /* BlinkyB.png */,
 				9763018C29BB967000BD8CFA /* PacManScene.swift */,
 				971D97F529C24675007B5D1C /* GhostNode.swift */,
 			);
@@ -250,6 +259,7 @@
 				0310E35129C15B8700D430CE /* BlinkyA.png in Resources */,
 				03A5916229C1651C009550B3 /* Pellet.png in Resources */,
 				0310E36629C15EB700D430CE /* ClydeD.png in Resources */,
+				C9491F3B29DD53F00081FAA8 /* PacMan.mp3 in Resources */,
 				97AD303C29C20E9800FFD797 /* wackawacka.mp3 in Resources */,
 				0310E36329C15EB700D430CE /* ClydeC.png in Resources */,
 				9763017829BB91B800BD8CFA /* LaunchScreen.storyboard in Resources */,
@@ -264,6 +274,8 @@
 				03A5916629C1652E009550B3 /* PowerPelletA.png in Resources */,
 				97AD303E29C2120C00FFD797 /* death.mp3 in Resources */,
 				9763017529BB91B800BD8CFA /* Assets.xcassets in Resources */,
+				C9491F3929DCA75B0081FAA8 /* los_angeles_clippers.png in Resources */,
+				C9491F3729DCA5B00081FAA8 /* ClydeC.png in Resources */,
 				0310E36429C15EB700D430CE /* PinkyC.png in Resources */,
 				0310E36A29C15EB700D430CE /* ClydeB.png in Resources */,
 				0310E35029C15B8700D430CE /* BlinkyC.png in Resources */,
@@ -435,6 +447,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PacMan00/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -462,6 +475,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PacMan00/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
