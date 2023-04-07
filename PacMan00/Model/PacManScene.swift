@@ -11,6 +11,7 @@ var pacManHitGhostCount = 0
 var pelletCount = 0
 var removedNodes = [SKNode]()
 
+//
 // this var removedNodes helps keep track of the removed pellets so we can get them back later on when the game restarts.
 
 // Play sound whenever PacMan is in motion
