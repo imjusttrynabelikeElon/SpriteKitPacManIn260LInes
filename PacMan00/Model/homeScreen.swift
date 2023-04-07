@@ -10,33 +10,34 @@ import UIKit
 import SwiftyGif
 import AVKit
 import AVFAudio
+import AVFoundation
 
 class homeScreen: UIViewController, SwiftyGifDelegate {
     
     @IBOutlet var pacManGif: UIImageView!
     
-    
     var aaPlayer: AVAudioPlayer?
+    let synthesizer = AVSpeechSynthesizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // Change the background color to black
-           view.backgroundColor = .black
-           
+        view.backgroundColor = .black
+        
         if let path = Bundle.main.path(forResource: "pacManEat", ofType: "mp3") {
-                    let url = URL(fileURLWithPath: path)
-                    do {
-                        aaPlayer = try AVAudioPlayer(contentsOf: url)
-                        aaPlayer?.numberOfLoops = -1
-                        aaPlayer?.play()
+            let url = URL(fileURLWithPath: path)
+            do {
+                aaPlayer = try AVAudioPlayer(contentsOf: url)
+                aaPlayer?.numberOfLoops = -1
+                aaPlayer?.volume = 0.3
+                aaPlayer?.play()
                 // aaPlayer?.numberOfLoops = -1 makes sure the theme song plays as long as the game is playing.
-                        
-                    } catch {
-                        print("Error loading audio file")
-                    }
-                }
+                
+            } catch {
+                print("Error loading audio file")
+            }
+        }
         
         self.pacManGif.delegate = self
         
@@ -53,6 +54,8 @@ class homeScreen: UIViewController, SwiftyGifDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        let speechUtterance = AVSpeechUtterance(string: "hello users welcome to PacMan... As we all knew it... founded by our leader Karon Bell")
+        self.synthesizer.speak(speechUtterance)
         view.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         
         UIView.animate(withDuration: 3.9, delay: 0, options: .curveEaseOut, animations: {
@@ -65,28 +68,28 @@ class homeScreen: UIViewController, SwiftyGifDelegate {
                 // Animation completed
                 print("Yess")
                 
+                // Speak the text
+                let speechUtterance = AVSpeechUtterance(string: "here is PacMan")
+                self.synthesizer.speak(speechUtterance)
+                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "viewControllerr") as! ViewControllerr
-            
+                
                 viewController.modalPresentationStyle = .fullScreen
                 self.present(viewController, animated: true, completion: {
                     // Remove homeScreen as the parent view controller
-                                   self.removeFromParent()
-                                   self.view.removeFromSuperview()
+                    self.removeFromParent()
+                    self.view.removeFromSuperview()
                     if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-                        let window = windowScene.windows.first {
+                       let window = windowScene.windows.first {
                         // Do something with the window
                         self.aaPlayer?.stop()
                     }
-
-
-                  
                 })
-            
-
             }
         }
     }
+    
 
     
     func gifDidStop(sender: UIImageView) {
