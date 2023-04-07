@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9763016729BB91B700BD8CFA"
-               BuildableName = "PacMan00.app"
-               BlueprintName = "PacMan00"
-               ReferencedContainer = "container:PacMan00.xcodeproj">
+               BuildableName = "PacMan0.app"
+               BlueprintName = "PacMan0"
+               ReferencedContainer = "container:PacMan0.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9763016729BB91B700BD8CFA"
-            BuildableName = "PacMan00.app"
-            BlueprintName = "PacMan00"
-            ReferencedContainer = "container:PacMan00.xcodeproj">
+            BuildableName = "PacMan0.app"
+            BlueprintName = "PacMan0"
+            ReferencedContainer = "container:PacMan0.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9763016729BB91B700BD8CFA"
-            BuildableName = "PacMan00.app"
-            BlueprintName = "PacMan00"
-            ReferencedContainer = "container:PacMan00.xcodeproj">
+            BuildableName = "PacMan0.app"
+            BlueprintName = "PacMan0"
+            ReferencedContainer = "container:PacMan0.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -74,7 +74,7 @@
 		03A5916329C1652E009550B3 /* PowerPelletB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PowerPelletB.png; sourceTree = "<group>"; };
 		03A5916429C1652E009550B3 /* PowerPelletA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PowerPelletA.png; sourceTree = "<group>"; };
 		971D97F529C24675007B5D1C /* GhostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostNode.swift; sourceTree = "<group>"; };
-		9763016829BB91B700BD8CFA /* PacMan00.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PacMan00.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9763016829BB91B700BD8CFA /* PacMan0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PacMan0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9763016B29BB91B700BD8CFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9763016D29BB91B700BD8CFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9763016F29BB91B700BD8CFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 		9763016929BB91B700BD8CFA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9763016829BB91B700BD8CFA /* PacMan00.app */,
+				9763016829BB91B700BD8CFA /* PacMan0.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,9 +214,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9763016729BB91B700BD8CFA /* PacMan00 */ = {
+		9763016729BB91B700BD8CFA /* PacMan0 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9763017C29BB91B800BD8CFA /* Build configuration list for PBXNativeTarget "PacMan00" */;
+			buildConfigurationList = 9763017C29BB91B800BD8CFA /* Build configuration list for PBXNativeTarget "PacMan0" */;
 			buildPhases = (
 				9763016429BB91B700BD8CFA /* Sources */,
 				9763016529BB91B700BD8CFA /* Frameworks */,
@@ -226,12 +226,12 @@
 			);
 			dependencies = (
 			);
-			name = PacMan00;
+			name = PacMan0;
 			packageProductDependencies = (
 				C99C527029DFC6B600AAF3EA /* SwiftyGif */,
 			);
 			productName = PacMan00;
-			productReference = 9763016829BB91B700BD8CFA /* PacMan00.app */;
+			productReference = 9763016829BB91B700BD8CFA /* PacMan0.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -249,7 +249,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9763016329BB91B700BD8CFA /* Build configuration list for PBXProject "PacMan00" */;
+			buildConfigurationList = 9763016329BB91B700BD8CFA /* Build configuration list for PBXProject "PacMan0" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -265,7 +265,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9763016729BB91B700BD8CFA /* PacMan00 */,
+				9763016729BB91B700BD8CFA /* PacMan0 */,
 			);
 		};
 /* End PBXProject section */
@@ -469,9 +469,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = A3M4AFU3DN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PacMan00/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -484,8 +485,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = WSU.PacMan00;
+				PRODUCT_BUNDLE_IDENTIFIER = WSU.PacMan0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -497,9 +499,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = A3M4AFU3DN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PacMan00/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -512,8 +515,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = WSU.PacMan00;
+				PRODUCT_BUNDLE_IDENTIFIER = WSU.PacMan0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -523,7 +527,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9763016329BB91B700BD8CFA /* Build configuration list for PBXProject "PacMan00" */ = {
+		9763016329BB91B700BD8CFA /* Build configuration list for PBXProject "PacMan0" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9763017A29BB91B800BD8CFA /* Debug */,
@@ -532,7 +536,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9763017C29BB91B800BD8CFA /* Build configuration list for PBXNativeTarget "PacMan00" */ = {
+		9763017C29BB91B800BD8CFA /* Build configuration list for PBXNativeTarget "PacMan0" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9763017D29BB91B800BD8CFA /* Debug */,
