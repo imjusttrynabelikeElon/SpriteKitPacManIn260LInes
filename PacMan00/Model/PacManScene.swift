@@ -7,7 +7,11 @@ let pacManSpeed = CGFloat(10)
 let pacManStartPosition = CGPoint(x: 10, y: -10) // Arbitrary not inside maze walls
 let wackawackaPlaySoundAction = SKAction.playSoundFileNamed("wackawacka", waitForCompletion: false)
 let deathPlaySoundAction = SKAction.playSoundFileNamed("death", waitForCompletion: false)
+var pacManHitGhostCount = 0
+var pelletCount = 0
+var removedNodes = [SKNode]()
 
+// this var removedNodes helps keep track of the removed pellets so we can get them back later on when the game restarts.
 
 // Play sound whenever PacMan is in motion
 func makePacManAction(node : SKNode) -> SKAction {
@@ -24,15 +28,21 @@ func makePacManAction(node : SKNode) -> SKAction {
 
 }
 
+
 func makePacManDeathAction() -> SKAction {
    return SKAction.sequence([deathPlaySoundAction,
-                             SKAction.scale(to: 1.5, duration: 0.2),
-                             SKAction.scale(to: 0.5, duration: 0.5),
+                             SKAction.scale(to: 1.5, duration: 0.1),
+                             SKAction.scale(to: 0.5, duration: 0.1),
+                             // changed the duration speed to be faster so the score wont go up more then one point by a mistake since the longer the duration the more the pacMan is touching the ghost which makes the computer up the score for some weird reason.
                              SKAction.removeFromParent()])
 }
 
+
+
 let infoLabelMoveAction = SKAction.sequence([SKAction.moveBy(x: 0.0, y: 100, duration: 1.0),
                                              SKAction.fadeOut(withDuration: 0.4), SKAction.removeFromParent()])
+
+
 
 class PacManScene : SKScene, SKPhysicsContactDelegate
 {
@@ -49,6 +59,8 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
                                     CGFloat.pi * 1.0 *  800,   // left
                                     CGFloat.pi * 0.0 *  800,   // right
    ]
+    
+    
     static var vulnerableGhostPrototype : VulnerableGhostNode?
     static var eyesPrototype : SKSpriteNode?
     static var infoLabelPrototype : SKLabelNode?
@@ -64,6 +76,8 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
     var allScore = [Int]()
     
     var scoreLabel: SKLabelNode!
+    
+    
    
    // MARK: - Initialization
    override func didMove(to view: SKView) {
@@ -86,6 +100,7 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
       pacManNode!.physicsBody!.collisionBitMask = 0b0100 // Don't colllide with Pellets or ghosts
        
    }
+    
    
    // MARK: - PacMan Movement
    func movePacMan() {
@@ -94,6 +109,8 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
       pacManNode!.run(SKAction.rotate(toAngle: PacManScene.directionAnglesRad[pacManDirection.rawValue],
                                       duration: 0.06))
    }
+    
+    
    
    // MARK: - Update for every frame
    override func update(_ currentTime: TimeInterval) {
@@ -111,6 +128,7 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
       path.addLine(to: CGPoint())
       pacManNode!.path = path.cgPath
    }
+    
    
    // MARK: - Info Labls
    func spawnInfoLabel(position: CGPoint, text: String) {
@@ -120,6 +138,8 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
       addChild(newLabel)
       newLabel.run(infoLabelMoveAction)
    }
+    
+    
    
    // MARK: - Physics Collisions
    func didBegin(_ contact: SKPhysicsContact) {
@@ -149,8 +169,24 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
              
              allScore.append(score)
              
-          
+           
+    
             validOtherNode.removeFromParent()
+             removedNodes.append(validOtherNode)
+
+             if otherNode!.name?.hasSuffix("Pellet") == true {
+                 print("H")
+                 pelletCount += 1
+                 //   pelletCount += 1 just tracks the count of the pellets as their being removed
+                 print(pelletCount)
+             } else {
+                 print("f")
+             }
+             
+         
+
+            
+             
             NotificationCenter.default.post(Notification(name: Notification.Name("didChangeScore")))
          } else if validOtherNode.name == "PowerPellet" {
             validOtherNode.removeFromParent()
@@ -163,8 +199,53 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
          } else if (contact.bodyA.node?.name ?? "").starts(with: "Ghost") ||
                      (contact.bodyB.node?.name ?? "").starts(with: "Ghost") {
             // Create "expand and pop" animation using arbitrary scale factors and periods
-            pacManNode!.run(makePacManDeathAction())
+             
+             pacManNode!.run(makePacManDeathAction())
+          
+            pacManHitGhostCount += 1
             
+             print(pacManHitGhostCount)
+             
+             if pacManHitGhostCount >= 3 {
+                 
+                 print("time to restart game. pacMan hit ghost too many times...")
+                 
+                 let ac = UIAlertController(title: "Oops hit ghost too many times..", message: "restart game", preferredStyle: .actionSheet)
+                 ac.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                 
+               
+                 if let viewController = UIApplication.shared.keyWindow?.rootViewController {
+                     var topViewController = viewController
+                     while let presentedViewController = topViewController.presentedViewController {
+                         topViewController = presentedViewController
+                     }
+                     topViewController.present(ac, animated: true, completion: nil)
+                 }
+
+                 
+                 score = 0
+                 
+                 
+                 pacManHitGhostCount = 0
+                 
+                 
+                 for node in removedNodes {
+                        self.addChild(node)
+                     // when the game is over all the nodes aka pellets that were removed now get added back to the scene.
+                    }
+                 
+                 removedNodes = []
+                 
+                 // this tells xcode to make sure nothing is in the array of removed nodes
+                 
+                      
+                   }
+                 
+             
+             
+             
+             
+             
             // Respawn PacMan after arbitrary period and restore PacMan size to default
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
                self.pacManNode!.position = pacManStartPosition
@@ -174,6 +255,7 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
                self.pacManNode!.run(SKAction.scale(to: 1, duration: 0.2))
             })
          }
+          
       }
    }
 }

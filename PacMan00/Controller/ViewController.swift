@@ -2,11 +2,12 @@ import UIKit
 import SpriteKit
 import AVFoundation
 import AVFAudio
+import SwiftyGif
 
 // imported AVFoundation and AVFAudio so we have access to the theme song for pacMan.
 
 
-class ViewController: UIViewController {
+class ViewControllerr: UIViewController {
     @IBOutlet var skView : SKView?
     @IBOutlet var scoreLabel : UILabel?
     var scoreLabell: UILabel?
@@ -14,6 +15,10 @@ class ViewController: UIViewController {
     var highScore = 0
     var allScore = [Int]()
     var aaPlayer: AVAudioPlayer?
+    
+   
+   
+    
  // aaPlayer is for the themeSong.
 
     override func viewDidLoad() {
@@ -31,6 +36,7 @@ class ViewController: UIViewController {
                         print("Error loading audio file")
                     }
                 }
+        
           // Retrieve high score from UserDefaults
           if let savedHighScore = UserDefaults.standard.value(forKey: "highScore") as? Int {
               self.highScore = savedHighScore
@@ -45,6 +51,8 @@ class ViewController: UIViewController {
 
         NotificationCenter.default.addObserver(forName: Notification.Name("didChangeScore"), object: nil, queue: nil, using: { (n : Notification) in
             self.scoreLabell?.text = "Your Score: \(scene.score)"
+
+            self.highScoreLabel?.text =  "High Score: \(self.highScore)"
 
             self.allScore.append(scene.score)
             // Update the highScore
@@ -70,15 +78,35 @@ class ViewController: UIViewController {
 
         view.addSubview(scoreLabell!)
 
-
-        highScoreLabel = UILabel(frame: CGRect(x: 223, y: 60, width: 200, height: 30))
+        // Set up the label
+        highScoreLabel = UILabel()
+        highScoreLabel!.text = "High Score"
         highScoreLabel!.textColor = .white
-        highScoreLabel!.textColor = .black
-        highScoreLabel!.textColor = .clear
-        highScoreLabel!.textColor = .white
-        highScoreLabel!.font = UIFont(name: "ChalkDuster", size: 20)
+        highScoreLabel!.font = UIFont(name: "ChalkDuster", size: 16)
+        highScoreLabel!.translatesAutoresizingMaskIntoConstraints = false  // Disable autoresizing masks
 
+        // Add the label to the view
         view.addSubview(highScoreLabel!)
+
+        // Set up constraints for the label
+        NSLayoutConstraint.activate([
+            // Center the label horizontally in the view
+            
+            highScoreLabel!.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 330),
+            
+            
+            highScoreLabel!.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 3),
+          
+            // Position the label 80 points from the top of the view
+            highScoreLabel!.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: 90),
+            
+            // Set a fixed width of 200 points for the label
+            highScoreLabel!.widthAnchor.constraint(equalToConstant: 240),
+            
+            // Set a fixed height of 30 points for the label
+            highScoreLabel!.heightAnchor.constraint(equalToConstant: 30)
+        ])
+
     }
 
     @IBAction func takeMotionFrom(gestureRecognizer : UIPanGestureRecognizer) {

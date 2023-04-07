@@ -40,9 +40,14 @@
 		9763018D29BB967000BD8CFA /* PacManScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9763018C29BB967000BD8CFA /* PacManScene.swift */; };
 		97AD303C29C20E9800FFD797 /* wackawacka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97AD303B29C20E9800FFD797 /* wackawacka.mp3 */; };
 		97AD303E29C2120C00FFD797 /* death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97AD303D29C2120C00FFD797 /* death.mp3 */; };
+		C91D396C29DFE29D00D54913 /*  SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D396B29DFE29D00D54913 /*  SplashViewController.swift */; };
 		C9491F3729DCA5B00081FAA8 /* ClydeC.png in Resources */ = {isa = PBXBuildFile; fileRef = C9491F3629DCA5B00081FAA8 /* ClydeC.png */; };
-		C9491F3929DCA75B0081FAA8 /* los_angeles_clippers.png in Resources */ = {isa = PBXBuildFile; fileRef = C9491F3829DCA75B0081FAA8 /* los_angeles_clippers.png */; };
 		C9491F3B29DD53F00081FAA8 /* PacMan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9491F3A29DD53F00081FAA8 /* PacMan.mp3 */; };
+		C99C526C29DFBAB200AAF3EA /* homeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C526B29DFBAB200AAF3EA /* homeScreen.swift */; };
+		C99C526E29DFBFA900AAF3EA /* pacMann.gif in Resources */ = {isa = PBXBuildFile; fileRef = C99C526D29DFBFA900AAF3EA /* pacMann.gif */; };
+		C99C527129DFC6B600AAF3EA /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = C99C527029DFC6B600AAF3EA /* SwiftyGif */; };
+		C99C527729DFDA9200AAF3EA /* pac-man.gif in Resources */ = {isa = PBXBuildFile; fileRef = C99C527629DFDA9200AAF3EA /* pac-man.gif */; };
+		C99C527929DFDE5E00AAF3EA /* pacManEat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C99C527829DFDE5E00AAF3EA /* pacManEat.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,9 +86,13 @@
 		9763018C29BB967000BD8CFA /* PacManScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacManScene.swift; sourceTree = "<group>"; };
 		97AD303B29C20E9800FFD797 /* wackawacka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wackawacka.mp3; sourceTree = "<group>"; };
 		97AD303D29C2120C00FFD797 /* death.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = death.mp3; sourceTree = "<group>"; };
+		C91D396B29DFE29D00D54913 /*  SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " SplashViewController.swift"; sourceTree = "<group>"; };
 		C9491F3629DCA5B00081FAA8 /* ClydeC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClydeC.png; sourceTree = "<group>"; };
-		C9491F3829DCA75B0081FAA8 /* los_angeles_clippers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = los_angeles_clippers.png; sourceTree = "<group>"; };
 		C9491F3A29DD53F00081FAA8 /* PacMan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PacMan.mp3; sourceTree = "<group>"; };
+		C99C526B29DFBAB200AAF3EA /* homeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeScreen.swift; sourceTree = "<group>"; };
+		C99C526D29DFBFA900AAF3EA /* pacMann.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pacMann.gif; sourceTree = "<group>"; };
+		C99C527629DFDA9200AAF3EA /* pac-man.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "pac-man.gif"; sourceTree = "<group>"; };
+		C99C527829DFDE5E00AAF3EA /* pacManEat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pacManEat.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C99C527129DFC6B600AAF3EA /* SwiftyGif in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +117,7 @@
 				0310E35B29C15EB700D430CE /* ClydeA.png */,
 				0310E35C29C15EB700D430CE /* ClydeB.png */,
 				0310E35529C15EB600D430CE /* ClydeC.png */,
+				C99C526D29DFBFA900AAF3EA /* pacMann.gif */,
 				0310E34F29C15B8700D430CE /* BlinkyD.png */,
 				0310E35829C15EB600D430CE /* ClydeD.png */,
 				0310E35429C15EB600D430CE /* InkyA.png */,
@@ -120,7 +131,6 @@
 				0310E35F29C15EB700D430CE /* VulnerableA.png */,
 				0310E35E29C15EB700D430CE /* VulnerableB.png */,
 				0310E34D29C15B8700D430CE /* BlinkyA.png */,
-				C9491F3829DCA75B0081FAA8 /* los_angeles_clippers.png */,
 				0310E34C29C15B8700D430CE /* BlinkyC.png */,
 				C9491F3629DCA5B00081FAA8 /* ClydeC.png */,
 			);
@@ -133,6 +143,7 @@
 				97AD303D29C2120C00FFD797 /* death.mp3 */,
 				97AD303B29C20E9800FFD797 /* wackawacka.mp3 */,
 				C9491F3A29DD53F00081FAA8 /* PacMan.mp3 */,
+				C99C527829DFDE5E00AAF3EA /* pacManEat.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -140,6 +151,7 @@
 		9763015F29BB91B700BD8CFA = {
 			isa = PBXGroup;
 			children = (
+				C91D396B29DFE29D00D54913 /*  SplashViewController.swift */,
 				9763016A29BB91B700BD8CFA /* PacMan00 */,
 				9763016929BB91B700BD8CFA /* Products */,
 			);
@@ -190,7 +202,9 @@
 				97264D9B29C22C1B00BB239D /* Sounds */,
 				97264D9A29C22C0E00BB239D /* Components */,
 				9763018229BB92C300BD8CFA /* PacMan.sks */,
+				C99C526B29DFBAB200AAF3EA /* homeScreen.swift */,
 				0310E34E29C15B8700D430CE /* BlinkyB.png */,
+				C99C527629DFDA9200AAF3EA /* pac-man.gif */,
 				9763018C29BB967000BD8CFA /* PacManScene.swift */,
 				971D97F529C24675007B5D1C /* GhostNode.swift */,
 			);
@@ -213,6 +227,9 @@
 			dependencies = (
 			);
 			name = PacMan00;
+			packageProductDependencies = (
+				C99C527029DFC6B600AAF3EA /* SwiftyGif */,
+			);
 			productName = PacMan00;
 			productReference = 9763016829BB91B700BD8CFA /* PacMan00.app */;
 			productType = "com.apple.product-type.application";
@@ -241,6 +258,9 @@
 				Base,
 			);
 			mainGroup = 9763015F29BB91B700BD8CFA;
+			packageReferences = (
+				C99C526F29DFC6B600AAF3EA /* XCRemoteSwiftPackageReference "SwiftyGif" */,
+			);
 			productRefGroup = 9763016929BB91B700BD8CFA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,6 +279,7 @@
 				0310E35129C15B8700D430CE /* BlinkyA.png in Resources */,
 				03A5916229C1651C009550B3 /* Pellet.png in Resources */,
 				0310E36629C15EB700D430CE /* ClydeD.png in Resources */,
+				C99C527929DFDE5E00AAF3EA /* pacManEat.mp3 in Resources */,
 				C9491F3B29DD53F00081FAA8 /* PacMan.mp3 in Resources */,
 				97AD303C29C20E9800FFD797 /* wackawacka.mp3 in Resources */,
 				0310E36329C15EB700D430CE /* ClydeC.png in Resources */,
@@ -267,6 +288,7 @@
 				9763018329BB92C300BD8CFA /* PacMan.sks in Resources */,
 				03A5916529C1652E009550B3 /* PowerPelletB.png in Resources */,
 				0310E36C29C15EB700D430CE /* VulnerableB.png in Resources */,
+				C99C527729DFDA9200AAF3EA /* pac-man.gif in Resources */,
 				0310E36729C15EB700D430CE /* InkyC.png in Resources */,
 				0310E35329C15B8700D430CE /* BlinkyD.png in Resources */,
 				0310E36E29C15EB700D430CE /* InkyB.png in Resources */,
@@ -274,13 +296,13 @@
 				03A5916629C1652E009550B3 /* PowerPelletA.png in Resources */,
 				97AD303E29C2120C00FFD797 /* death.mp3 in Resources */,
 				9763017529BB91B800BD8CFA /* Assets.xcassets in Resources */,
-				C9491F3929DCA75B0081FAA8 /* los_angeles_clippers.png in Resources */,
 				C9491F3729DCA5B00081FAA8 /* ClydeC.png in Resources */,
 				0310E36429C15EB700D430CE /* PinkyC.png in Resources */,
 				0310E36A29C15EB700D430CE /* ClydeB.png in Resources */,
 				0310E35029C15B8700D430CE /* BlinkyC.png in Resources */,
 				0310E36229C15EB700D430CE /* InkyA.png in Resources */,
 				0310E36D29C15EB700D430CE /* VulnerableA.png in Resources */,
+				C99C526E29DFBFA900AAF3EA /* pacMann.gif in Resources */,
 				9763017329BB91B700BD8CFA /* Main.storyboard in Resources */,
 				0310E36B29C15EB700D430CE /* InkyD.png in Resources */,
 				030E5AB729C25F9900E84C4E /* Eyes.png in Resources */,
@@ -296,8 +318,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C99C526C29DFBAB200AAF3EA /* homeScreen.swift in Sources */,
 				971D97F629C24675007B5D1C /* GhostNode.swift in Sources */,
 				9763017029BB91B700BD8CFA /* ViewController.swift in Sources */,
+				C91D396C29DFE29D00D54913 /*  SplashViewController.swift in Sources */,
 				9763016C29BB91B700BD8CFA /* AppDelegate.swift in Sources */,
 				9763018D29BB967000BD8CFA /* PacManScene.swift in Sources */,
 				9763016E29BB91B700BD8CFA /* SceneDelegate.swift in Sources */,
@@ -518,6 +542,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C99C526F29DFC6B600AAF3EA /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kirualex/SwiftyGif";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C99C527029DFC6B600AAF3EA /* SwiftyGif */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C99C526F29DFC6B600AAF3EA /* XCRemoteSwiftPackageReference "SwiftyGif" */;
+			productName = SwiftyGif;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9763016029BB91B700BD8CFA /* Project object */;
 }
