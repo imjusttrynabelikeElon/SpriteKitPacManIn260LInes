@@ -40,7 +40,7 @@ class homeScreen: UIViewController, SwiftyGifDelegate {
         }
         
         self.pacManGif.delegate = self
-        
+  
         do {
             let image = try UIImage(gifName: "pacMann")
             self.pacManGif.setGifImage(image, loopCount: -1)
@@ -54,7 +54,7 @@ class homeScreen: UIViewController, SwiftyGifDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let speechUtterance = AVSpeechUtterance(string: "hello users welcome to PacMan... As we all knew it... founded by our leader Karon Bell")
+        let speechUtterance = AVSpeechUtterance(string: "hello users welcome to PacMan... As we all knew it... Created by our leader Karon Bell")
         self.synthesizer.speak(speechUtterance)
         view.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         
@@ -69,7 +69,7 @@ class homeScreen: UIViewController, SwiftyGifDelegate {
                 print("Yess")
                 
                 // Speak the text
-                let speechUtterance = AVSpeechUtterance(string: "here is PacMan")
+                let speechUtterance = AVSpeechUtterance(string: "lets play PacMan!")
                 self.synthesizer.speak(speechUtterance)
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)

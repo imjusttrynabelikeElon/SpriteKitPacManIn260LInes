@@ -1,6 +1,6 @@
 import SpriteKit
 
-
+//
 class WallNode : SKSpriteNode {}
 
 let pacManSpeed = CGFloat(10)

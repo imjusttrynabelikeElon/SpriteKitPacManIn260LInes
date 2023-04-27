@@ -40,7 +40,6 @@
 		9763018D29BB967000BD8CFA /* PacManScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9763018C29BB967000BD8CFA /* PacManScene.swift */; };
 		97AD303C29C20E9800FFD797 /* wackawacka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97AD303B29C20E9800FFD797 /* wackawacka.mp3 */; };
 		97AD303E29C2120C00FFD797 /* death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97AD303D29C2120C00FFD797 /* death.mp3 */; };
-		C91D396C29DFE29D00D54913 /*  SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D396B29DFE29D00D54913 /*  SplashViewController.swift */; };
 		C9491F3729DCA5B00081FAA8 /* ClydeC.png in Resources */ = {isa = PBXBuildFile; fileRef = C9491F3629DCA5B00081FAA8 /* ClydeC.png */; };
 		C9491F3B29DD53F00081FAA8 /* PacMan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9491F3A29DD53F00081FAA8 /* PacMan.mp3 */; };
 		C99C526C29DFBAB200AAF3EA /* homeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C526B29DFBAB200AAF3EA /* homeScreen.swift */; };
@@ -86,7 +85,6 @@
 		9763018C29BB967000BD8CFA /* PacManScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacManScene.swift; sourceTree = "<group>"; };
 		97AD303B29C20E9800FFD797 /* wackawacka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wackawacka.mp3; sourceTree = "<group>"; };
 		97AD303D29C2120C00FFD797 /* death.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = death.mp3; sourceTree = "<group>"; };
-		C91D396B29DFE29D00D54913 /*  SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " SplashViewController.swift"; sourceTree = "<group>"; };
 		C9491F3629DCA5B00081FAA8 /* ClydeC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClydeC.png; sourceTree = "<group>"; };
 		C9491F3A29DD53F00081FAA8 /* PacMan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PacMan.mp3; sourceTree = "<group>"; };
 		C99C526B29DFBAB200AAF3EA /* homeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeScreen.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 		9763015F29BB91B700BD8CFA = {
 			isa = PBXGroup;
 			children = (
-				C91D396B29DFE29D00D54913 /*  SplashViewController.swift */,
 				9763016A29BB91B700BD8CFA /* PacMan00 */,
 				9763016929BB91B700BD8CFA /* Products */,
 			);
@@ -321,7 +318,6 @@
 				C99C526C29DFBAB200AAF3EA /* homeScreen.swift in Sources */,
 				971D97F629C24675007B5D1C /* GhostNode.swift in Sources */,
 				9763017029BB91B700BD8CFA /* ViewController.swift in Sources */,
-				C91D396C29DFE29D00D54913 /*  SplashViewController.swift in Sources */,
 				9763016C29BB91B700BD8CFA /* AppDelegate.swift in Sources */,
 				9763018D29BB967000BD8CFA /* PacManScene.swift in Sources */,
 				9763016E29BB91B700BD8CFA /* SceneDelegate.swift in Sources */,
