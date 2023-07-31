@@ -16,7 +16,8 @@ class ViewControllerr: UIViewController {
     var allScore = [Int]()
     var aaPlayer: AVAudioPlayer?
     var playPauseButton: UIButton!
-   
+    var playPauseButtonCenterXConstraint: NSLayoutConstraint!
+
    
     
  // aaPlayer is for the themeSong.
@@ -34,27 +35,25 @@ class ViewControllerr: UIViewController {
            scoreLabell.translatesAutoresizingMaskIntoConstraints = false
            NSLayoutConstraint.activate([
                scoreLabell.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 60),
-               scoreLabell.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 13),
-               scoreLabell.widthAnchor.constraint(equalToConstant: 200),
-               scoreLabell.heightAnchor.constraint(equalToConstant: 30)
+               scoreLabell.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 173),
+               scoreLabell.widthAnchor.constraint(equalToConstant: 100),
+               scoreLabell.heightAnchor.constraint(equalToConstant: 100)
            ])
         
-        // Add the play/pause button
-          playPauseButton = UIButton(type: .system)
-          playPauseButton.setTitle("Pause", for: .normal)
-          playPauseButton.titleLabel?.font = UIFont(name: "Helvetica", size: 20)
-          playPauseButton.setTitleColor(.white, for: .normal)
-          playPauseButton.addTarget(self, action: #selector(playPauseButtonTapped), for: .touchUpInside)
-          playPauseButton.translatesAutoresizingMaskIntoConstraints = false
-          view.addSubview(playPauseButton)
+        playPauseButton = UIButton(type: .system)
+           playPauseButton.setTitle("Pause", for: .normal)
+           playPauseButton.titleLabel?.font = UIFont(name: "Helvetica", size: 21)
+           playPauseButton.setTitleColor(.white, for: .normal)
+           playPauseButton.addTarget(self, action: #selector(playPauseButtonTapped), for: .touchUpInside)
+           playPauseButton.translatesAutoresizingMaskIntoConstraints = false
+           view.addSubview(playPauseButton)
 
-          // Set up constraints for the button
-          NSLayoutConstraint.activate([
-              playPauseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-              playPauseButton.topAnchor.constraint(equalTo: scoreLabell!.bottomAnchor, constant: 10),
-              playPauseButton.widthAnchor.constraint(equalToConstant: 100),
-              playPauseButton.heightAnchor.constraint(equalToConstant: 40)
-          ])
+           // Set up constraints for the button
+           playPauseButtonCenterXConstraint = playPauseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+           playPauseButtonCenterXConstraint.isActive = true
+           playPauseButton.topAnchor.constraint(equalTo: scoreLabell!.bottomAnchor, constant: -40).isActive = true
+           playPauseButton.widthAnchor.constraint(equalToConstant: 180).isActive = true
+           playPauseButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
 
 
         if let path = Bundle.main.path(forResource: "PacMan", ofType: "mp3") {
@@ -170,4 +169,14 @@ class ViewControllerr: UIViewController {
             (skView!.scene as! PacManScene).pacManDirection = .Right
         }
     }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        if UIDevice.current.orientation.isLandscape {
+            playPauseButtonCenterXConstraint.constant = -341 // Adjust this value as needed
+        } else {
+            playPauseButtonCenterXConstraint.constant = 0
+        }
+    }
+
 }
