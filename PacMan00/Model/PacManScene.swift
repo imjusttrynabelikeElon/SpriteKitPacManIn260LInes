@@ -71,16 +71,20 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
     var pacManMouthAngleDeltaRad = CGFloat(-0.05) // Arbitrary small change
     var pacManDirection = Direction.Left { didSet { movePacMan() } }
     var score = 0
-   
+    var uiNode: SKNode! // A node to hold UI elements
     var highScore = 0
     var allScore = [Int]()
     
     var scoreLabel: SKLabelNode!
-    
+    var playButton: SKLabelNode!
+    var pauseButton: SKLabelNode!
     
    
    // MARK: - Initialization
    override func didMove(to view: SKView) {
+       
+       uiNode = SKNode()
+               addChild(uiNode)
       physicsWorld.contactDelegate = self
       PacManScene.vulnerableGhostPrototype = (childNode(withName: "GhostVulnerablePrototype") as? VulnerableGhostNode)!
       PacManScene.eyesPrototype = (childNode(withName: "EyesPrototype") as? SKSpriteNode)!
@@ -99,6 +103,9 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
       // Ghosts have collision category  b0010 and collision mask b0010
       pacManNode!.physicsBody!.collisionBitMask = 0b0100 // Don't colllide with Pellets or ghosts
        
+       
+        
+       
    }
     
    
@@ -110,7 +117,34 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
                                       duration: 0.06))
    }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+
+            if let node = atPoint(location) as? SKSpriteNode {
+                if node.name == "PlayButton" {
+                    // Handle play button tap
+                    // Call the method to resume the game
+                    resumeGame()
+                } else if node.name == "PauseButton" {
+                    // Handle pause button tap
+                    // Call the method to pause the game
+                    pauseGame()
+                }
+            }
+        }
+    }
+
+    func pauseGame() {
+        self.view?.isPaused = true
+        pacManNode?.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+    }
+
+    func resumeGame() {
+        self.view?.isPaused = false
+        movePacMan() // Restart the PacMan movement
+    }
+
    
    // MARK: - Update for every frame
    override func update(_ currentTime: TimeInterval) {
@@ -127,6 +161,7 @@ class PacManScene : SKScene, SKPhysicsContactDelegate
                               clockwise: true)
       path.addLine(to: CGPoint())
       pacManNode!.path = path.cgPath
+       
    }
     
    

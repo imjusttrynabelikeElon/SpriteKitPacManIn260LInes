@@ -10,12 +10,12 @@ import SwiftyGif
 class ViewControllerr: UIViewController {
     @IBOutlet var skView : SKView?
     @IBOutlet var scoreLabel : UILabel?
-    var scoreLabell: UILabel?
+    var scoreLabell: UILabel!
     var highScoreLabel: UILabel?
     var highScore = 0
     var allScore = [Int]()
     var aaPlayer: AVAudioPlayer?
-    
+    var playPauseButton: UIButton!
    
    
     
@@ -23,6 +23,39 @@ class ViewControllerr: UIViewController {
 
     override func viewDidLoad() {
           super.viewDidLoad()
+        
+        // Add the score label
+           scoreLabell = UILabel()
+           scoreLabell.textColor = .white
+           scoreLabell.font = UIFont(name: "ChalkDuster", size: 17)
+           view.addSubview(scoreLabell)
+
+           // Set up constraints for the score label
+           scoreLabell.translatesAutoresizingMaskIntoConstraints = false
+           NSLayoutConstraint.activate([
+               scoreLabell.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 60),
+               scoreLabell.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 13),
+               scoreLabell.widthAnchor.constraint(equalToConstant: 200),
+               scoreLabell.heightAnchor.constraint(equalToConstant: 30)
+           ])
+        
+        // Add the play/pause button
+          playPauseButton = UIButton(type: .system)
+          playPauseButton.setTitle("Pause", for: .normal)
+          playPauseButton.titleLabel?.font = UIFont(name: "Helvetica", size: 20)
+          playPauseButton.setTitleColor(.white, for: .normal)
+          playPauseButton.addTarget(self, action: #selector(playPauseButtonTapped), for: .touchUpInside)
+          playPauseButton.translatesAutoresizingMaskIntoConstraints = false
+          view.addSubview(playPauseButton)
+
+          // Set up constraints for the button
+          NSLayoutConstraint.activate([
+              playPauseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+              playPauseButton.topAnchor.constraint(equalTo: scoreLabell!.bottomAnchor, constant: 10),
+              playPauseButton.widthAnchor.constraint(equalToConstant: 100),
+              playPauseButton.heightAnchor.constraint(equalToConstant: 40)
+          ])
+
 
         if let path = Bundle.main.path(forResource: "PacMan", ofType: "mp3") {
                     let url = URL(fileURLWithPath: path)
@@ -107,6 +140,20 @@ class ViewControllerr: UIViewController {
             highScoreLabel!.heightAnchor.constraint(equalToConstant: 30)
         ])
 
+    }
+
+    @objc func playPauseButtonTapped() {
+        if skView!.isPaused {
+            // If the game is paused, resume the game
+            skView!.isPaused = false
+            playPauseButton.setTitle("Pause", for: .normal)
+            (skView!.scene as! PacManScene).resumeGame()
+        } else {
+            // If the game is not paused, pause the game
+            skView!.isPaused = true
+            playPauseButton.setTitle("Play", for: .normal)
+            (skView!.scene as! PacManScene).pauseGame()
+        }
     }
 
     @IBAction func takeMotionFrom(gestureRecognizer : UIPanGestureRecognizer) {
